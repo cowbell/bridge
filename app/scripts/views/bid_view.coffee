@@ -9,7 +9,7 @@
     switch
       when @get("bid.isPass")     then "Pass"
       when @get("bid.isDouble")   then "Dbl"
-      when @get("bid.isReDduble") then "Rdbl"
+      when @get("bid.isRedouble") then "Rdbl"
       when @get("bid.isContract")
         switch @get("bid.trump")
           when "C" then @get("bid.level") + "<span class='suit-c'>♣</span>"

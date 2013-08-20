@@ -32,4 +32,4 @@
     alert = if @get("isAlerted") then @get("description") || "" else undefined
     compactBid = [bid, alert].without(undefined).join("!")
     @setProperties(level: null, description: undefined)
-    @get("controllers.table.board.auction")?.pushObject(compactBid)
+    @get("auction").pushObject(compactBid)
