@@ -1,0 +1,79 @@
+.cards
+  font-size: 5px
+
+  .card
+    .corner .number
+      font-size: 2.5em
+      height: 1.92em/2
+      line-height: 1.92em/2
+      font-weight: bold
+    .card-ten .corner .number
+      margin-left: -1px
+      font-size: 2.5em
+      font-weight: bold
+    .corner span
+      font-size: 3em
+      font-weight: normal
+
+    cursor: pointer
+    &.disabled
+      cursor: default
+
+  .card-back
+    background-image: asset-data-url("img/back.png")
+    background-size: cover
+    position: absolute
+    width: 100%
+    height: 100%
+
+  .face
+    background-size: cover
+    position: absolute
+    left: 2.56em
+    top: 2.58em
+    width: 10.8em
+    height: 17.24em
+
+  .suit-c
+    .card-king .face
+      background-image: asset-data-url("img/faces/face-king-club.png")
+    .card-queen .face
+      background-image: asset-data-url("img/faces/face-queen-club.png")
+    .card-jack .face
+      background-image: asset-data-url("img/faces/face-jack-club.png")
+
+    .symbol:after
+      content: "♣"
+
+  .suit-d
+    .card-king .face
+      background-image: asset-data-url("img/faces/face-king-diamond.png")
+    .card-queen .face
+      background-image: asset-data-url("img/faces/face-queen-diamond.png")
+    .card-jack .face
+      background-image: asset-data-url("img/faces/face-jack-diamond.png")
+
+    .symbol:after
+      content: "♦"
+
+  .suit-h
+    .card-king .face
+      background-image: asset-data-url("img/faces/face-king-heart.png")
+    .card-queen .face
+      background-image: asset-data-url("img/faces/face-queen-heart.png")
+    .card-jack .face
+      background-image: asset-data-url("img/faces/face-jack-heart.png")
+
+    .symbol:after
+      content: "♥"
+
+  .suit-s
+    .card-king .face
+      background-image: asset-data-url("img/faces/face-king-spade.png")
+    .card-queen .face
+      background-image: asset-data-url("img/faces/face-queen-spade.png")
+    .card-jack .face
+      background-image: asset-data-url("img/faces/face-jack-spade.png")
+
+    .symbol:after
+      content: "♠"
