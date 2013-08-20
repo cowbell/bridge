@@ -15,14 +15,12 @@
   playDidChange: (->
     if play = @get("play")
       play.addArrayObserver(@, willChange: @playContentWillChange, didChange: @playContentDidChange)
-      @playContentDidChange(play, 0, 0, play.get("length"))
-  ).observes("play.@each")
+  ).observes("play.content.@each")
 
   playWillChange: (->
     if play = @get("play")
       play.removeArrayObserver(@)
-      @playContentDidChange(play, 0, play.get("length"), 0)
-  ).observesBefore("play.@each")
+  ).observesBefore("play.content.@each")
 
   initialDidChange: (->
     cards = Bridge.Utils.sortCards(@get("initial") || ["", "", "", "", "", "", "", "", "", "", "", "", ""], @get("trump"))
