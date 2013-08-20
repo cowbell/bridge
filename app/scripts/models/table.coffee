@@ -46,12 +46,12 @@ userSetter = (key, value) ->
         id: 3
         dealer: "N"
         vulnerable: "NONE"
-        bids: ["7S", "PASS", "PASS", "PASS"]
+        bids: []
         cards: []
-        n: []
-        e: []
-        s: []
-        w: []
+        n: ["SQ", "ST", "S6", "S3", "H7", "DK", "DT", "D3", "D2", "CQ", "C9", "C7", "C3"]
+        e: ["SA", "SK", "SJ", "S8", "DA", "DJ", "D7", "D6", "CA", "CT", "C8", "C5", "C4"]
+        s: ["S9", "S7", "S5", "S2", "HA", "H8", "H3", "DQ", "D8", "D5", "D4", "C6", "C2"]
+        w: ["S4", "HK", "HQ", "HJ", "HT", "H9", "H6", "H5", "H4", "H2", "D9", "CK", "CJ"]
         result: null
         claim: null
 
