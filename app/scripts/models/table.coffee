@@ -38,10 +38,14 @@ userSetter = (key, value) ->
   reload: ->
     @setProperties
       id: 2
-      user_n: null
-      user_e: null
-      user_s: null
-      user_w: null
+      user_n:
+        name: "Homer"
+      user_e:
+        name: "Bart"
+      user_s:
+        name: "Marge"
+      user_w:
+        name: "Lisa"
       board:
         id: 3
         dealer: "N"
@@ -54,19 +58,3 @@ userSetter = (key, value) ->
         w: ["S4", "HK", "HQ", "HJ", "HT", "H9", "H6", "H5", "H4", "H2", "D9", "CK", "CJ"]
         result: null
         claim: null
-
-  save: ->
-    $.ajax "/api/tables",
-      type: "post"
-    .done (payload) =>
-      @setProperties(payload.table)
-
-  join: (direction) ->
-    $.ajax "/api/tables/#{@get('id')}/join",
-      type: "patch"
-      data: table: {direction: direction}
-
-  quit: (direction) ->
-    $.ajax "/api/tables/#{@get('id')}/quit",
-      type: "patch"
-      data: table: {direction: direction}

@@ -18,8 +18,3 @@
       @set("content", splitted[0])
       @set("alert", splitted[1])
   ).property("content", "alert")
-
-  save: (boardId) ->
-    $.ajax "/api/boards/#{boardId}/bids",
-      type: "post"
-      data: bid: @getProperties("content", "alert")

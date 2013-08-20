@@ -3,17 +3,10 @@
 
   playBinding: "controllers.table.board.play"
   dummyBinding: "play.dummy"
-  loggedInUserIdBinding: "Bridge.session.userId"
-  currentUserIdBinding: "controllers.table.currentUser.id"
-  declarerUserIdBinding: "controllers.table.declarerUser.id"
 
   isDummy: (->
     @get("direction") == @get("dummy")
   ).property("direction", "dummy")
-
-  isEnabled: (->
-    if @get("isDummy") then @get("declarerUserId") == @get("loggedInUserId") else @get("currentUserId") == @get("loggedInUserId")
-  ).property("loggedInUserId", "currentUserId", "isDummy", "declarerUserId")
 
   init: ->
     @_super.apply(@, arguments)
@@ -23,13 +16,13 @@
     if play = @get("play")
       play.addArrayObserver(@, willChange: @playContentWillChange, didChange: @playContentDidChange)
       @playContentDidChange(play, 0, 0, play.get("length"))
-  ).observes("play")
+  ).observes("play.@each")
 
   playWillChange: (->
     if play = @get("play")
       play.removeArrayObserver(@)
       @playContentDidChange(play, 0, play.get("length"), 0)
-  ).observesBefore("play")
+  ).observesBefore("play.@each")
 
   initialDidChange: (->
     cards = Bridge.Utils.sortCards(@get("initial") || ["", "", "", "", "", "", "", "", "", "", "", "", ""], @get("trump"))
@@ -66,7 +59,7 @@
   ).property("@each", "currentSuit")
 
   playCard: (card) ->
-    card.save(@get("controllers.table.board.id"))
+    @get("play").pushObject(card.get("content"))
 
 Bridge.register "controller:hand_n", Bridge.HandController.extend
   direction: "N"
