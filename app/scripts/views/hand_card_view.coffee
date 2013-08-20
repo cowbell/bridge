@@ -5,7 +5,7 @@
     @get("card.content") == "" or
     @get("context.currentDirection") != @get("ownerDirection") or
     (@get("context.currentSuit")? and @get("context.currentSuit") != @get("card.suit") and @get("context.hasCardInCurrentSuit"))
-  ).property("content","context.isPlaying", "context.currentDirection", "context.currentSuit", "context.hasCardInCurrentSuit")
+  ).property("content", "context.isPlaying", "context.currentDirection", "context.currentSuit", "context.hasCardInCurrentSuit")
 
   click: ->
     @get("context").playCard(@get("card")) unless @get("isDisabled")

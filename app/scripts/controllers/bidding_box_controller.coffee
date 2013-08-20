@@ -16,12 +16,9 @@
   currentSideBinding: "auction.currentSide"
   isCompletedBinding: "auction.isCompleted"
 
-  loggedInUserIdBinding: "Bridge.session.userId"
-  currentUserIdBinding: "controllers.table.currentUser.id"
-
   isEnabled: (->
-    !@get("isCompleted") and @get("currentUserId") == @get("loggedInUserId")
-  ).property("loggedInUserId", "currentUserId", "isCompleted")
+    !@get("isCompleted")
+  ).property("isCompleted")
 
   descriptionDidChange: (->
     @set "isAlerted", !Ember.isEmpty(@get("description"))
@@ -33,5 +30,6 @@
 
   bid: (bid) ->
     alert = if @get("isAlerted") then @get("description") || "" else undefined
+    compactBid = [bid, alert].without(undefined).join("!")
     @setProperties(level: null, description: undefined)
-    Bridge.Bid.create(content: bid, alert: alert).save(@get("controllers.table.board.id"))
+    @get("controllers.table.board.auction")?.pushObject(compactBid)
