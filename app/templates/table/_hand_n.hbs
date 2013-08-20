@@ -1,0 +1,10 @@
+<div class="span4 hand">
+  {{view Bridge.DirectionView direction="N"}}
+  {{view Bridge.JoinView direction="N"}}
+  {{view Bridge.QuitView direction="N"}}
+  <div class="cards">
+    {{#each card in controllers.hand_n}}
+      {{view Bridge.HandCardView cardBinding=card ownerDirection="N" contextBinding=controllers.hand_n}}
+    {{/each}}
+  </div>
+</div>

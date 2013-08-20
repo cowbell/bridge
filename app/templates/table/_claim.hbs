@@ -1,0 +1,17 @@
+{{#with controllers.claim}}
+  <div {{bindAttr class="isEnabled::hide"}}>
+    {{view Bridge.ClaimInfoView}}
+    {{view Bridge.ClaimView direction="N"}}
+    {{view Bridge.ClaimAcceptView direction="N"}}
+    {{view Bridge.ClaimRejectView direction="N"}}
+    {{view Bridge.ClaimView direction="E"}}
+    {{view Bridge.ClaimAcceptView direction="E"}}
+    {{view Bridge.ClaimRejectView direction="E"}}
+    {{view Bridge.ClaimView direction="S"}}
+    {{view Bridge.ClaimAcceptView direction="S"}}
+    {{view Bridge.ClaimRejectView direction="S"}}
+    {{view Bridge.ClaimView direction="W"}}
+    {{view Bridge.ClaimAcceptView direction="W"}}
+    {{view Bridge.ClaimRejectView direction="W"}}
+  </div>
+{{/with}}

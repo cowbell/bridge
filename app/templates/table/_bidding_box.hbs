@@ -1,0 +1,29 @@
+{{#with controllers.bidding_box}}
+  <div {{bindAttr class=":bidding-box isEnabled::hide"}}>
+    <p>
+      {{view Bridge.ContractLevelView level="1"}}
+      {{view Bridge.ContractLevelView level="2"}}
+      {{view Bridge.ContractLevelView level="3"}}
+      {{view Bridge.ContractLevelView level="4"}}
+      {{view Bridge.ContractLevelView level="5"}}
+      {{view Bridge.ContractLevelView level="6"}}
+      {{view Bridge.ContractLevelView level="7"}}
+    </p>
+    <p>
+      {{view Bridge.ContractSuitView suit="C"}}
+      {{view Bridge.ContractSuitView suit="D"}}
+      {{view Bridge.ContractSuitView suit="H"}}
+      {{view Bridge.ContractSuitView suit="S"}}
+      {{view Bridge.ContractSuitView suit="NT"}}
+    </p>
+    <p>
+      {{view Bridge.DoubleView}}
+      {{view Bridge.RedoubleView}}
+      {{view Bridge.PassView}}
+    </p>
+    <p>
+      {{view Bridge.AlertView}}
+      {{input value=description}}
+    </p>
+  </div>
+{{/with}}

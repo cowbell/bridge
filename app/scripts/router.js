@@ -1,3 +1,0 @@
-Bridge.Router.map(function () {
-  
-});

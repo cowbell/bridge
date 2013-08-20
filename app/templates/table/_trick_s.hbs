@@ -1,0 +1,8 @@
+<div class="span4 cards trick">
+  {{#with controllers.trick}}
+    {{view Bridge.TrickCardView cardBinding=n classNames="top"}}
+    {{view Bridge.TrickCardView cardBinding=e classNames="right"}}
+    {{view Bridge.TrickCardView cardBinding=s classNames="bottom"}}
+    {{view Bridge.TrickCardView cardBinding=w classNames="left"}}
+  {{/with}}
+</div>

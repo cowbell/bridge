@@ -1,0 +1,22 @@
+<div class="span4">
+  <ul>
+    <table class="auction table table-bordered table-condensed">
+      <tr>
+        {{#with controllers.summary}}
+          <th {{bindAttr class="isNSvulnerable:vulnerable:not-vulnerable"}}>N</th>
+          <th {{bindAttr class="isEWvulnerable:vulnerable:not-vulnerable"}}>E</th>
+          <th {{bindAttr class="isNSvulnerable:vulnerable:not-vulnerable"}}>S</th>
+          <th {{bindAttr class="isEWvulnerable:vulnerable:not-vulnerable"}}>W</th>
+        {{/with}}
+      </tr>
+      {{#each row in controllers.auction}}
+        <tr>
+          {{view Bridge.BidView bidBinding=row.n}}
+          {{view Bridge.BidView bidBinding=row.e}}
+          {{view Bridge.BidView bidBinding=row.s}}
+          {{view Bridge.BidView bidBinding=row.w}}
+        </tr>
+      {{/each}}
+    </table>
+  </ul>
+</div>

@@ -1,0 +1,9 @@
+<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+  Claim
+  <span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+  {{#each number in view.range}}
+    <li><a href="#" {{action "claim" view.direction number target=controllers.claim}}>I claim <strong>{{number}}</strong> tricks more</a></li>
+  {{/each}}
+</ul>
