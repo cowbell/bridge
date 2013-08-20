@@ -1,2 +1,1 @@
-@Bridge.ApplicationController = Ember.Controller.extend
-  needs: ["session"]
+@Bridge.ApplicationController = Ember.Controller.extend()

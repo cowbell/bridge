@@ -30,7 +30,7 @@ module.exports = function (grunt) {
                 tasks: ['emberTemplates']
             },
             coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
+                files: ['<%= yeoman.app %>/scripts/**/*.coffee'],
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                 tasks: ['compass:server']
             },
             neuter: {
-                files: ['.tmp/scripts/{,*/}*.js',
+                files: ['.tmp/scripts/**/*.js',
                         '!.tmp/scripts/combined-scripts.js'],
                 tasks: ['neuter']
             },
@@ -137,7 +137,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.app %>/scripts',
-                    src: '{,*/}*.coffee',
+                    src: '**/*.coffee',
                     dest: '.tmp/scripts',
                     ext: '.js'
                 }]

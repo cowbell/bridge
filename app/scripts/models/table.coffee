@@ -36,9 +36,24 @@ userSetter = (key, value) ->
       when @get("user_w.id") then "W"
 
   reload: ->
-    $.ajax("/api/tables/#{@get('id')}")
-    .done (payload) =>
-      @setProperties(payload.table)
+    @setProperties
+      id: 2
+      user_n: null
+      user_e: null
+      user_s: null
+      user_w: null
+      board:
+        id: 3
+        dealer: "N"
+        vulnerable: "NONE"
+        bids: ["7S", "PASS", "PASS", "PASS"]
+        cards: []
+        n: []
+        e: []
+        s: []
+        w: []
+        result: null
+        claim: null
 
   save: ->
     $.ajax "/api/tables",
