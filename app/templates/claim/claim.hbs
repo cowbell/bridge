@@ -1,9 +1,11 @@
-<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-  Claim
-  <span class="caret"></span>
-</a>
-<ul class="dropdown-menu">
-  {{#each number in view.range}}
-    <li><a href="#" {{action "claim" number target=controllers.claim}}>{{view.direction}} claims <strong>{{number}}</strong> tricks more</a></li>
-  {{/each}}
-</ul>
+<div class="btn-group">
+  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Claim
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    {{#each number in view.range}}
+      <li><a href="#" {{action "claim" number target=controllers.claim}}>{{view.direction}} claims <strong>{{number}}</strong> tricks more</a></li>
+    {{/each}}
+  </ul>
+</div>

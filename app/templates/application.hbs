@@ -1,23 +1,10 @@
-<div class="navbar navbar-static-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand" href="#">Bridge</a>
-      <ul class="nav pull-right">
-        <div class="btn-group">
-          {{#if controllers.session.isSignedIn}}
-            <button class="btn" data-toggle="dropdown" href="#">{{controllers.session.userName}}</button>
-            <button class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="#" rel="nofollow" {{action "signOut" target=controllers.session}}>Sign out</a></li>
-            </ul>
-          {{/if}}
-        </div>
-      </ul>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Bridge</a>
     </div>
   </div>
-</div>
+</nav>
 
 <div class="container">
   {{outlet}}
