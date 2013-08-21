@@ -2,10 +2,10 @@
 
 @font-face {
   font-family: "Suit-Regular";
-  src: asset-url("suit-regular.eot?#iefix") format("embedded-opentype"),
-       asset-url("suit-regular.woff") format("woff"),
-       asset-url("suit-regular.ttf") format("truetype"),
-       asset-url("suit-regular.svg#suit-regular") format("svg");
+  src: url("/styles/fonts/suit-regular.eot?#iefix") format("embedded-opentype"),
+       url("/styles/fonts/suit-regular.woff") format("woff"),
+       url("/styles/fonts/suit-regular.ttf") format("truetype"),
+       url("/styles/fonts/suit-regular.svg#suit-regular") format("svg");
   font-weight: normal;
   font-style: normal;
 }

@@ -3,7 +3,3 @@
 
   currentDirection: null
   currentDirectionBinding: "board.currentDirection"
-
-  contentDidChange: (->
-    @get("content")?.reload()
-  ).observes("content")
