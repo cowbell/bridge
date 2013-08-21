@@ -34,7 +34,6 @@
   ).property("currentDirection")
 
   contract: (->
-    bids = @get("content").map (bid) -> new RegExp(Bridge.BIDS.join("|")).exec(bid)[0]
-    contract = Bridge.Utils.auctionContract(@get("dealer"), bids)
+    contract = Bridge.Utils.auctionContract(@get("dealer"), @get("content"))
     Bridge.Contract.create(content: contract) if contract?
   ).property("isCompleted", "content.@each")
