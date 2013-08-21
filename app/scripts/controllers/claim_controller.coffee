@@ -3,7 +3,7 @@
 
   # http://stackoverflow.com/questions/12502465/bindings-on-objectcontroller-ember-js
   contentBinding: "controllers.table.board.claim"
-  currentDirectionBinding: "controllers.table.currentDirection"
+  currentDirectionBinding: "controllers.table.board.play.currentDirection"
   play: null
   playBinding: "controllers.table.board.play"
 
