@@ -1,6 +1,7 @@
 Ember.LOG_VERSION = false
 
-Bridge = window.Bridge = Ember.Application.create()
+Bridge = window.Bridge = Ember.Application.create
+  rootElement: "#bridge-app"
 
 # Order and include as you please.
 require "scripts/constants"
