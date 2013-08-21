@@ -25,5 +25,3 @@
 
   claim: (value) ->
     @setProperties(tricks: value, direction: @get("currentDirection"))
-    # @get("content").save(@get("controllers.table.board.id"))
-    # @get("content").accept(@get("controllers.table.board.id"), direction)

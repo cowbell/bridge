@@ -16,6 +16,6 @@ Bridge.TableRoute = Ember.Route.extend
         claim: null
 
   serialize: (model) ->
-    board_id: model.get("board.id")
+    board_id:   model.get("board.id")
     vulnerable: model.get("board.vulnerable")
-    dealer: model.get("board.dealer")
+    dealer:     model.get("board.dealer")
