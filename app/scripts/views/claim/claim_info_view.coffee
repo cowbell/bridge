@@ -3,9 +3,7 @@
   templateName: "claim/claim_info"
 
   isClaimedBinding: "context.isClaimed"
-  isAcceptedBinding: "context.isAccepted"
-  isRejectedBinding: "context.isRejected"
 
   isVisible: (->
-    @get("isClaimed") or @get("isAccepted") or @get("isRejected")
-  ).property("isClaimed", "isAccepted", "isRejcted")
+    @get("isClaimed")
+  ).property("isClaimed")

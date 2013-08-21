@@ -7,7 +7,3 @@
   contentDidChange: (->
     @get("content")?.reload()
   ).observes("content")
-
-  signedInUserDirection: (->
-    @get("content").userDirection(Bridge.get("session.userId"))
-  ).property("user_n", "user_e", "user_s", "user_w")
