@@ -9,4 +9,14 @@
       Bridge.CONTRACTS.indexOf(@get("context.contractBid")) >= Bridge.CONTRACTS.indexOf(@get("context.level") + @get("suit"))
   ).property("context.isCompleted", "context.contractBid", "context.level", "suit")
 
+  symbol: (->
+    switch @get("suit")
+      when "C" then "<span class='suit-c'>♣</span>"
+      when "D" then "<span class='suit-d'>♦</span>"
+      when "H" then "<span class='suit-h'>♥</span>"
+      when "S" then "<span class='suit-s'>♠</span>"
+      else
+        @get("suit")
+  ).property("suit")
+
   click: -> @get("context").bid(@get("context.level") + @get("suit"))
