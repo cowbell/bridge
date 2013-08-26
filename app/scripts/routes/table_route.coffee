@@ -13,7 +13,6 @@ Bridge.TableRoute = Ember.Route.extend
         e: deal.e()
         s: deal.s()
         w: deal.w()
-        claim: null
 
   serialize: (model) ->
     board_id:   model.get("board.id")
