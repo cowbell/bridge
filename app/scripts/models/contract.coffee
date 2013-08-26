@@ -8,3 +8,7 @@
   bid: (-> /^[1-7](?:C|D|H|S|NT)/.exec(@get("content"))[0]).property("content")
 
   toString: -> @get("content")
+
+  tricksToMake: (->
+    @get("level") + 6
+  ).property("level")

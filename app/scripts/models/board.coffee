@@ -19,3 +19,8 @@
       else
         Bridge.Claim.create(value)
   ).property()
+
+  result: (->
+    if @get("play.isCompleted")
+      @get("play.declarerSideWonTricks") - @get("contract.tricksToMake")
+  ).property("play.isCompleted", "contract.tricksToMake", "play.declarerSideWonTricks")

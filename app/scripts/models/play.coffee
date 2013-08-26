@@ -47,3 +47,23 @@
   currentSuit: (->
     @filterProperty("isLead").get("lastObject.suit") if @get("length") % 4 != 0
   ).property("length", "arrangedContent.@each")
+
+  winningCards: (->
+    @filterProperty("isWinning")
+  ).property("arrangedContent.@each.isWinning")
+
+  nsWonTricksNumber: (->
+    @get("winningCards")?.filterProperty("side", "NS").length
+  ).property("winningCards.@each")
+
+  ewWonTricksNumber: (->
+    @get("winningCards")?.filterProperty("side", "EW").length
+  ).property("winningCards.@each")
+
+  declarerSideWonTricks: (->
+    switch @get("declarer")
+      when "N", "S"
+        @get("nsWonTricksNumber")
+      when "E", "W"
+        @get("ewWonTricksNumber")
+  ).property("declarer", "nsWonTricksNumber", "ewWonTricksNumber")

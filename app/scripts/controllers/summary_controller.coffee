@@ -6,6 +6,8 @@
   dealerBinding: "controllers.table.board.dealer"
   vulnerableBinding: "controllers.table.board.vulnerable"
   resultBinding: "controllers.table.board.result"
+  nsWonTricksNumberBinding: "play.nsWonTricksNumber"
+  ewWonTricksNumberBinding: "play.ewWonTricksNumber"
 
   contract: (->
     @get("auction.contract") if @get("auction.isCompleted")
@@ -19,18 +21,6 @@
       when result == 0 then "="
       when result <  0 then "#{result}"
   ).property("result")
-
-  winningCards: (->
-    @get("play")?.filterProperty("isWinning")
-  ).property("play.@each.isWinning")
-
-  nsWonTricksNumber: (->
-    @get("winningCards")?.filterProperty("side", "NS").length
-  ).property("winningCards.@each")
-
-  ewWonTricksNumber: (->
-    @get("winningCards")?.filterProperty("side", "EW").length
-  ).property("winningCards.@each")
 
   isNSvulnerable: (->
     @get("vulnerable") in ["BOTH", "NS"]
