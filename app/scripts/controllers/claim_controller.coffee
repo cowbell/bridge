@@ -10,7 +10,7 @@
   ).property("play.contract")
 
   isClaimed: (->
-    !Ember.isNone(@get("board.claim"))
+    !Ember.isNone(@get("tricks"))
   ).property("tricks")
 
   winningCards: (->
@@ -18,7 +18,11 @@
   ).property("play.@each")
 
   tricks: (->
-    @get("board.claim")[1..-1]
+    @get("board.claim")?[1..-1]
+  ).property("board.claim")
+
+  direction: (->
+    @get("board.claim")?[0]
   ).property("board.claim")
 
   max: (->
