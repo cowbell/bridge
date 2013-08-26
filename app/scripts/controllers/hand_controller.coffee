@@ -1,6 +1,7 @@
 @Bridge.HandController = Ember.ArrayController.extend
   needs: ["table"]
 
+  boardBinding: "controllers.table.board"
   playBinding: "controllers.table.board.play"
   dummyBinding: "play.dummy"
 
@@ -49,8 +50,8 @@
   trumpBinding: "contract.trump"
 
   isPlaying: (->
-    !!@get("contract")
-  ).property("contract")
+    !!@get("contract") and !@get("board.isFinished")
+  ).property("contract", "board.isFinished")
 
   hasCardInCurrentSuit: (->
     @someProperty("suit", @get("currentSuit"))

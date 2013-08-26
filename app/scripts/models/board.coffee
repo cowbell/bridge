@@ -12,15 +12,18 @@
     if @get("auction.isCompleted") then @get("play.currentDirection") else @get("auction.currentDirection")
   ).property("auction.isCompleted", "auction.currentDirection", "play.currentDirection")
 
-  claim: ((key, value) ->
-    if arguments.length == 2
-      if value instanceof Bridge.Claim
-        value
-      else
-        Bridge.Claim.create(value)
-  ).property()
-
   result: (->
     if @get("play.isCompleted")
-      @get("play.declarerSideWonTricks") - @get("contract.tricksToMake")
-  ).property("play.isCompleted", "contract.tricksToMake", "play.declarerSideWonTricks")
+      @get("play.declarerSideWonTricksNumber") - @get("contract.tricksToMake")
+    else if claim = @get("claim")
+      claimTricksNumber = parseInt(claim[1..-1], 10)
+      switch claim[0] # claim direction
+        when @get("play.declarer"), @get("play.dummy")
+          @get("play.declarerSideWonTricksNumber") + claimTricksNumber - @get("contract.tricksToMake")
+        when @get("play.lho"), @get("play.rho")
+          13 - @get("play.winningCards").length - claimTricksNumber - @get("contract.tricksToMake")
+  ).property("play.isCompleted", "contract.tricksToMake", "play.declarerSideWonTricksNumber", "claim")
+
+  isFinished: (->
+    !Ember.isNone(@get("result"))
+  ).property("result")

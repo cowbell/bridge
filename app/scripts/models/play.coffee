@@ -60,7 +60,7 @@
     @get("winningCards")?.filterProperty("side", "EW").length
   ).property("winningCards.@each")
 
-  declarerSideWonTricks: (->
+  declarerSideWonTricksNumber: (->
     switch @get("declarer")
       when "N", "S"
         @get("nsWonTricksNumber")

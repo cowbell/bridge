@@ -1,8 +1,6 @@
-@Bridge.ClaimController = Ember.ObjectController.extend
+@Bridge.ClaimController = Ember.Controller.extend
   needs: ["table"]
 
-  # http://stackoverflow.com/questions/12502465/bindings-on-objectcontroller-ember-js
-  contentBinding: "controllers.table.board.claim"
   currentDirectionBinding: "controllers.table.board.play.currentDirection"
   play: null
   playBinding: "controllers.table.board.play"
@@ -25,3 +23,4 @@
 
   claim: (value) ->
     @setProperties(tricks: value, direction: @get("currentDirection"))
+    @get("controllers.table.board").set("claim", "#{@get('direction')}#{value}")
