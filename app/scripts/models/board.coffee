@@ -1,12 +1,22 @@
 @Bridge.Board = Ember.Object.extend
   init: ->
     @_super.apply(@, arguments)
-    @set("auction", Bridge.Auction.create(board: @, contentBinding: "board.bids", dealerBinding: "board.dealer"))
-    @set("play", Bridge.Play.create(board: @, contentBinding: "board.cards", contractBinding: "board.contract"))
+    # @set("auction", Bridge.Auction.create(content: @get("bids"), dealer: @get("dealer")))
+    # @set("play", Bridge.Play.create(content: @get("cards"), contract: Ember.computed.alias("board.contract")))
+
+  setupModels: (->
+    @set("auction", Bridge.Auction.create(content: @get("bids"), dealer: @get("dealer")))
+    @set("play", Bridge.Play.create(content: @get("cards")))
+  ).on("init")
 
   contract: (->
     @get("auction.contract") if @get("auction.isCompleted")
   ).property("auction.contract", "auction.isCompleted")
+
+  auctionIsCompletedDidChange: (->
+    if @get("auction.isCompleted")
+      @get("play").set("contract", @get("auction.contract"))
+  ).observes("auction.isCompleted")
 
   currentDirection: (->
     if @get("auction.isCompleted") then @get("play.currentDirection") else @get("auction.currentDirection")

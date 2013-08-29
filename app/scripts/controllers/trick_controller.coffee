@@ -1,8 +1,8 @@
 @Bridge.TrickController = Ember.Controller.extend
   needs: ["table"]
 
-  playBinding: "controllers.table.board.play"
-  trickNumberBinding: "play.lastObject.trick"
+  play: Ember.computed.alias("controllers.table.board.play")
+  trickNumber: Ember.computed.alias("play.lastObject.trick")
 
   getCard: (direction) ->
     @get("play")?.find((card) => card.get("trick") == @get("trickNumber") and card.get("direction") == direction)

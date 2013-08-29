@@ -1,17 +1,17 @@
 @Bridge.HandController = Ember.ArrayController.extend
   needs: ["table"]
 
-  boardBinding: "controllers.table.board"
-  playBinding: "controllers.table.board.play"
-  dummyBinding: "play.dummy"
+  board: Ember.computed.alias("controllers.table.board")
+  play: Ember.computed.alias("controllers.table.play")
+  dummy: Ember.computed.alias("play.dummy")
+  currentSuit: Ember.computed.alias("play.currentSuit")
+  currentDirection: Ember.computed.alias("play.currentDirection")
+  contract: Ember.computed.alias("play.contract")
+  trump: Ember.computed.alias("contract.trump")
 
   isDummy: (->
     @get("direction") == @get("dummy")
   ).property("direction", "dummy")
-
-  init: ->
-    @_super.apply(@, arguments)
-    @initialDidChange()
 
   playDidChange: (->
     if play = @get("play")
@@ -27,7 +27,7 @@
     cards = Bridge.Utils.sortCards(@get("initial") || ["", "", "", "", "", "", "", "", "", "", "", "", ""], @get("trump"))
     @set("content", cards.map (card) -> Bridge.Card.create(content: card))
     @playContentDidChange(@get("play"), 0, 0, @get("play.length"))
-  ).observes("initial", "trump")
+  ).observes("initial", "trump").on("init")
 
   # unlikely to happen, but when it does, we just add a card to the end of hand
   playContentWillChange: (content, index, removedCount, addedCount) ->
@@ -44,11 +44,6 @@
         if card.get("direction") == @get("direction")
           if handCard = @findProperty("content", cardContent) then @removeObject(handCard) else @popObject()
 
-  currentSuitBinding: "play.currentSuit"
-  currentDirectionBinding: "play.currentDirection"
-  contractBinding: "play.contract"
-  trumpBinding: "contract.trump"
-
   isPlaying: (->
     !!@get("contract") and !@get("board.isFinished")
   ).property("contract", "board.isFinished")
@@ -62,16 +57,16 @@
 
 Bridge.register "controller:hand_n", Bridge.HandController.extend
   direction: "N"
-  initialBinding: "controllers.table.content.board.n"
+  initial: Ember.computed.alias("controllers.table.board.n")
 
 Bridge.register "controller:hand_e", Bridge.HandController.extend
   direction: "E"
-  initialBinding: "controllers.table.content.board.e"
+  initial: Ember.computed.alias("controllers.table.board.e")
 
 Bridge.register "controller:hand_s", Bridge.HandController.extend
   direction: "S"
-  initialBinding: "controllers.table.content.board.s"
+  initial: Ember.computed.alias("controllers.table.board.s")
 
 Bridge.register "controller:hand_w", Bridge.HandController.extend
   direction: "W"
-  initialBinding: "controllers.table.content.board.w"
+  initial: Ember.computed.alias("controllers.table.board.w")

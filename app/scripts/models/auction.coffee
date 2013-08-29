@@ -1,8 +1,4 @@
 @Bridge.Auction = Ember.ArrayProxy.extend
-  init: ->
-    @_super.apply(@, arguments)
-    @reindex()
-
   arrangedContent: (->
     @get("content").map (bid, i) -> Bridge.Bid.create(compact: bid)
   ).property()
@@ -23,7 +19,7 @@
         bid.setProperties(index: i, direction: direction)
       else
         @set("currentDirection", direction)
-  ).observes("dealer", "arrangedContent.@each")
+  ).observes("dealer", "arrangedContent.@each").on("init")
 
   isCompleted: (->
     @get("length") > 3 and @slice(@get("length") - 3).everyProperty("isPass")

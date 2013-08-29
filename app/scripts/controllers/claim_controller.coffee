@@ -1,9 +1,9 @@
 @Bridge.ClaimController = Ember.Controller.extend
   needs: ["table"]
 
-  boardBinding: "controllers.table.board"
-  currentDirectionBinding: "board.play.currentDirection"
-  playBinding: "board.play"
+  board: Ember.computed.alias("controllers.table.board")
+  play: Ember.computed.alias("board.play")
+  currentDirection: Ember.computed.alias("play.currentDirection")
 
   isEnabled: (->
     !!@get("play.contract")
@@ -29,5 +29,6 @@
     13 - @get("winningCards")?.length || 0
   ).property("winningCards.@each")
 
-  claim: (value) ->
-    @get("board").set("claim", "#{@get('currentDirection')}#{value}")
+  actions:
+    claim: (value) ->
+      @get("board").set("claim", "#{@get('currentDirection')}#{value}")

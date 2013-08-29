@@ -1,20 +1,20 @@
 @Bridge.BiddingBoxController = Ember.Controller.extend
   needs: ["table"]
 
-  auctionBinding: "controllers.table.board.auction"
+  auction: Ember.computed.alias("controllers.table.board.auction")
+  contract: Ember.computed.alias("auction.contract")
+  contractDirection: Ember.computed.alias("contract.direction")
+  contractSide: Ember.computed.alias("contract.side")
+  contractLevel: Ember.computed.alias("contract.level")
+  contractTrump: Ember.computed.alias("contract.trump")
+  contractBid: Ember.computed.alias("contract.bid")
 
-  contractBinding: "auction.contract"
-  contractDirectionBinding: "contract.direction"
-  contractSideBinding: "contract.side"
-  contractLevelBinding: "contract.level"
-  contractTrumpBinding: "contract.trump"
-  contractBidBinding: "contract.bid"
-  isContractDoubledBinding: "contract.isDoubled"
-  isContractRedoubledBinding: "contract.isRedoubled"
+  isContractDoubled: Ember.computed.alias("contract.isDoubled")
+  isContractRedoubled: Ember.computed.alias("contract.isRedoubled")
 
-  currentDirectionBinding: "auction.currentDirection"
-  currentSideBinding: "auction.currentSide"
-  isCompletedBinding: "auction.isCompleted"
+  currentDirection: Ember.computed.alias("auction.currentDirection")
+  currentSide: Ember.computed.alias("auction.currentSide")
+  isCompleted: Ember.computed.alias("auction.isCompleted")
 
   isEnabled: (->
     !@get("isCompleted")

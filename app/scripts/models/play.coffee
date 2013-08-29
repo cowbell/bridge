@@ -21,15 +21,11 @@
       for i in [index..(index + addedCount - 1)]
         @get("arrangedContent").insertAt(i, Bridge.Card.create(content: content.objectAt(i)))
 
-  trumpBinding: "contract.trump"
-  declarerBinding: "contract.direction"
+  trump: Ember.computed.alias("contract.trump")
+  declarer: Ember.computed.alias("contract.direction")
   dummy: (-> {N: "S", E: "W", S: "N", W: "E"}[@get("declarer")]).property("declarer")
   lho: (-> {N: "E", E: "S", S: "W", W: "N"}[@get("declarer")]).property("declarer")
   rho: (-> {N: "W", E: "N", S: "E", W: "S"}[@get("declarer")]).property("declarer")
-
-  init: ->
-    @_super.apply(@, arguments)
-    @reindex()
 
   reindex: (->
     Bridge.Utils.playDirections(@get("declarer"), @get("trump"), @get("content").concat("")).forEach (direction, i, directions) =>
@@ -38,7 +34,7 @@
         card.setProperties(index: i, direction: direction, isWinning: direction == directions[winningCardIndex])
       else
         @set("currentDirection", direction)
-  ).observes("declarer", "trump", "arrangedContent.@each")
+  ).observes("declarer", "trump", "arrangedContent.@each").on("init")
 
   isCompleted: (->
     @get("length") == 52
