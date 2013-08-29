@@ -9,14 +9,14 @@
     @set("play", Bridge.Play.create(content: @get("cards")))
   ).on("init")
 
-  contract: (->
-    @get("auction.contract") if @get("auction.isCompleted")
-  ).property("auction.contract", "auction.isCompleted")
-
   auctionIsCompletedDidChange: (->
     if @get("auction.isCompleted")
       @get("play").set("contract", @get("auction.contract"))
   ).observes("auction.isCompleted")
+
+  contract: (->
+    @get("auction.contract") if @get("auction.isCompleted")
+  ).property("auction.contract", "auction.isCompleted")
 
   currentDirection: (->
     if @get("auction.isCompleted") then @get("play.currentDirection") else @get("auction.currentDirection")

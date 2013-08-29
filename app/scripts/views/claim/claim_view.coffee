@@ -2,7 +2,7 @@
   classNames: ["btn-group"]
   templateName: "claim/claim"
 
-  directionBinding: "context.currentDirection"
+  direction: Ember.computed.alias("context.currentDirection")
 
   isVisible: (->
     !@get("context.isClaimed")

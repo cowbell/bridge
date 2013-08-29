@@ -2,7 +2,7 @@
   classNames: ["alert alert-info"]
   templateName: "claim/claim_info"
 
-  isClaimedBinding: "context.isClaimed"
+  isClaimed: Ember.computed.alias("context.isClaimed")
 
   isVisible: (->
     @get("isClaimed")

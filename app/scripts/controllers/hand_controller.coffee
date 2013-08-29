@@ -2,7 +2,7 @@
   needs: ["table"]
 
   board: Ember.computed.alias("controllers.table.board")
-  play: Ember.computed.alias("controllers.table.play")
+  play: Ember.computed.alias("controllers.table.board.play")
   dummy: Ember.computed.alias("play.dummy")
   currentSuit: Ember.computed.alias("play.currentSuit")
   currentDirection: Ember.computed.alias("play.currentDirection")
