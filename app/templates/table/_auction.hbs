@@ -8,7 +8,7 @@
         <th {{bind-attr class="isEWvulnerable:vulnerable:not-vulnerable"}}>W</th>
       {{/with}}
     </tr>
-    {{#each row in controllers.auction}}
+    {{#each row in controllers.auction.rows}}
       <tr>
         {{view Bridge.BidView bidBinding=row.n}}
         {{view Bridge.BidView bidBinding=row.e}}

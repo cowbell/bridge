@@ -1,4 +1,4 @@
-@Bridge.AuctionController = Ember.ArrayController.extend
+@Bridge.AuctionController = Ember.Controller.extend
   needs: ["table"]
 
   auction: Ember.computed.alias("controllers.table.board.auction")
@@ -6,7 +6,7 @@
   dealerIndex: (-> Bridge.DIRECTIONS.indexOf(@get("dealer"))).property("dealer")
 
   # TODO: use array observers
-  content: (->
+  rows: (->
     dealerIndex = @get("dealerIndex")
     auctionLength = @get("auction.length")
     if dealerIndex? and auctionLength
