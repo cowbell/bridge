@@ -30,6 +30,7 @@
   ).property("currentDirection")
 
   contract: (->
-    contract = Bridge.Utils.auctionContract(@get("dealer"), @get("content"))
+    bids = @get("arrangedContent").mapBy("content")
+    contract = Bridge.Utils.auctionContract(@get("dealer"), bids)
     Bridge.Contract.create(content: contract) if contract?
-  ).property("isCompleted", "content.@each")
+  ).property("isCompleted", "arrangedContent.@each")
